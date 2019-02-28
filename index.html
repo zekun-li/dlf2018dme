@@ -137,7 +137,7 @@ slider1.addEventListener('input', function(e) {
   var feature = features[0];
   var popup = new mapboxgl.Popup({ offset: [0, -15] })
     .setLngLat(feature.geometry.coordinates)
-    .setHTML('<h3>' + feature.properties.Type + '</h3><p>' + feature.properties.Name + '</p>'+ '<p><img src="'feature.properties.image'" alt="'An Image of marker.properties.title'"></p>')
+    .setHTML('<h3>' + feature.properties.Type + '</h3><p>' + feature.properties.Name + '</p>'+ '<p><img src="'feature.properties.Image'" alt="'An Image of marker.properties.title'"></p>')
  
 
   
