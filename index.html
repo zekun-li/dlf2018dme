@@ -60,7 +60,7 @@
     <div class='map-overlay-inner'>
         <label>HOLC 1939</label>
         <input id='slider' type='range' min='0' max='100' step='0' value='100' />
-      <label>Watts 1965</label>
+      <label>Census 1940</label>
         <input id='slider1' type='range' min='0' max='100' step='0' value='100' />
     </div>
 </div>
@@ -112,16 +112,16 @@ slider1.addEventListener('input', function(e) {
         // Adjust the layers opacity. layer here is arbitrary - this could
         // be another layer name found in your style or a custom layer
         // added on the fly using `addSource`.
-        map.setPaintProperty('Watts', 'raster-opacity', parseInt(e.target.value, 10) / 100);
+        map.setPaintProperty('Census 1940', 'raster-opacity', parseInt(e.target.value, 10) / 100);
         // Value indicator
     });
  });
   ({
     
-    "id":"Watts",
+    "id":"Census 1940",
         "source": {
             "type": "raster",
-            "url": "mapbox://andy-rutkowski.0tqu2dvy"
+            "url": "mapbox://andy-rutkowski.72s991wa"
         },
         "type": "raster"
      })
