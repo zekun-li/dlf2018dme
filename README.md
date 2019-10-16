@@ -1,3 +1,5 @@
-# dlf2018dme
+# Demo: Generating Historical Map from OSM Map
 
-This GitHub repository is for the2018 DLF Digital Ecosystems workshop. This repo provides examples of some HTML code that will be used with MapBox. It also provides access to some of the data for the workshop. The repo is meant to provide a working example of how to produce some simple webmaps as well as demonstrate how a repo can be used for project and data management.
+This repository is the demo for generating historical maps from OSM map. It contains three layers: OSM layer, historical map layer and synthetic historical map layer.
+
+Users could toogle the slide bar to change the transparency of the map layers.
