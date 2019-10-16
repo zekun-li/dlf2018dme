@@ -58,7 +58,7 @@
  //You can label these however you want.
   <div class='map-overlay top'>
     <div class='map-overlay-inner'>
-        <label>HOLC 1939</label>
+        <label>Zekun Slider</label>
         <input id='slider' type='range' min='0' max='100' step='0' value='100' />
       <label>Census 1940</label>
         <input id='slider1' type='range' min='0' max='100' step='0' value='100' />
@@ -71,8 +71,8 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiemVrdW4tbGkiLCJhIjoiY2sxOXJsNW0zMDEycDNibzYxNWpnZjVxbyJ9.0B_LtsErZHMxP_Nee-wQtg';
 var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/zekun-li/ck19ry1346h7z1cq65mycu2df',
-    center: [-118.545829, 33.989976],
+    style: 'mapbox://styles/zekun-li/ck1sgz4n13mb41cpiekh4tqcr',
+    center: [-1.545829, 52.589976],
     minZoom: 9.5,
     maxZoom: 13,
     zoom: 9.5
@@ -91,16 +91,15 @@ map.on('load', function() {
         // Adjust the layers opacity. layer here is arbitrary - this could
         // be another layer name found in your style or a custom layer
         // added on the fly using `addSource`.
-        map.setPaintProperty('CA_LosAngeles1_193911-0uyoo9', 'raster-opacity', parseInt(e.target.value, 10) / 100);
+        map.setPaintProperty('zekun-li-6chotj8u', 'raster-opacity', parseInt(e.target.value, 10) / 100);
     });
  
   ({
     
-        "id": "CA_LosAngeles1_193911-0uyoo9",
+        "id": "zekun-li-6chotj8u",
         "source": {
             "type": "raster",
-            //"url": "mapbox://andy-rutkowski.a0p1p0hr"
-            "url":"mapbox://zekun-li.asnsvrxz"
+            "url":"mapbox://zekun-li.6chotj8u"
         },
         "type": "raster"
     
@@ -113,49 +112,26 @@ slider.addEventListener('input', function(e) {
         // Adjust the layers opacity. layer here is arbitrary - this could
         // be another layer name found in your style or a custom layer
         // added on the fly using `addSource`.
-        map.setPaintProperty('watts-curfew-map-8v80i8', 'raster-opacity', parseInt(e.target.value, 10) / 100);
+        map.setPaintProperty('mosaic-5j7zik', 'raster-opacity', parseInt(e.target.value, 10) / 100);
         // Value indicator
     });
  });
   ({
     
-    "id":"watts-curfew-map-8v80i8",
+    "id":"mosaic-5j7zik",
         "source": {
             "type": "raster",
-            //"url": "mapbox://andy-rutkowski.72s991wa"
-            "url":"mapbox://zekun-li.31lrgcr8"
+            "url":"mapbox://zekun-li.6chotj8u"
         },
         "type": "raster"
      })
-  //In this section you will just want to replace the layers name with whatever name you gave your GreenBook layer.
-        map.on('click', function(e) {
-  var features = map.queryRenderedFeatures(e.point, {
-    layers: ['47GreenBook'] // replace this with the name of the layer
-  });
-  if (!features.length) {
-    return;
-  }
-  var feature = features[0];
-  var popup = new mapboxgl.Popup({ offset: [3, -15] })
- 
-    .setLngLat(feature.geometry.coordinates)
-    .setHTML('<h3>' + feature.properties.Type + '</h3><p>' + feature.properties.Name + '</p>"<img src=' + feature.properties.Image  + "  'height=100 width=100>" 
 
- 
-)
-             
-             
-             
-  
-    .setLngLat(feature.geometry.coordinates)
-    .addTo(map);
-});
 </script>
   <div id="info">
     
-    <h2>Digital Mapping Ecosystems Example Map</h1>
+    <h2>Demo of Generating Historical Map from OSM Map</h1>
 
-    <p>This map has two historical maps with a slider. In addition, one layer from the Greenbook has been added.</p>
+    <p>This map has two historical maps with a slider. </p>
     </div>
 
 </body>
