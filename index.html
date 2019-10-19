@@ -59,9 +59,9 @@
   <div class='map-overlay top'>
     <div class='map-overlay-inner'>
         <label>OSM Map</label>
-        <input id='slider' type='range' min='0' max='100' step='0' value='100' />
+        <input id='slider' type='range' min='0' max='100' step='0' value='0' />
       	<label>NLS Map</label>
-        <input id='slider1' type='range' min='0' max='100' step='0' value='100' />
+        <input id='slider1' type='range' min='0' max='100' step='0' value='0' />
         <label>Synthetic Historical Map</label>
         <input id='slider2' type='range' min='0' max='100' step='0' value='100' />
     </div>
@@ -81,8 +81,8 @@
     });
 
 
-    var slider = document.getElementById('slider', 'slider1');
-    var sliderValue = document.getElementById('slider-value', 'slider-value1');
+    var slider = document.getElementById('slider', 'slider1','slider2');
+    var sliderValue = document.getElementById('slider-value', 'slider-value1','slider-value2');
     map.on('load', function() {
 
       //In the section below replace the "id" info with the name that you gave your HOLC map. You can then replace all instances of that name in order to stay consistent. For example in the map.setPaintProperty replace 'HOLC1939' with your name.
@@ -114,19 +114,38 @@
         // Adjust the layers opacity. layer here is arbitrary - this could
         // be another layer name found in your style or a custom layer
         // added on the fly using `addSource`.
-        map.setPaintProperty('zekun-li-3c3jfdvd', 'raster-opacity', parseInt(e.target.value, 10) / 100);
+        map.setPaintProperty('zekun-li-aj0cc62x', 'raster-opacity', parseInt(e.target.value, 10) / 100);
         // Value indicator
       });
     });
     ({
 
-      "id":"zekun-li-3c3jfdvd",
+      "id":"zekun-li-aj0cc62x",
       "source": {
         "type": "raster",
-        "url": "zekun-li.3c3jfdvd"
+        "url": "mapbox://zekun-li.j0cc62x"
       },
       "type": "raster"
     })
+    
+  map.addLayer;
+      slider2.addEventListener('input', function(e) {
+        // Adjust the layers opacity. layer here is arbitrary - this could
+        // be another layer name found in your style or a custom layer
+        // added on the fly using `addSource`.
+        map.setPaintProperty('zekun-li-3c3jfdvd', 'raster-opacity', parseInt(e.target.value, 10) / 100);
+      });
+
+      ({
+
+        "id": "zekun-li-3c3jfdvd",
+        "source": {
+          "type": "raster",
+          "url": "mapbox://zekun-li.3c3jfdvd"
+        },
+        "type": "raster"
+
+      })
 
   </script>
 
