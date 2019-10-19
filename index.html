@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset='utf-8' />
-    <title>Demo Map</title>
+    <title>DLF Project Map</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.css' rel='stylesheet' />
@@ -58,9 +58,9 @@
  //You can label these however you want.
   <div class='map-overlay top'>
     <div class='map-overlay-inner'>
-        <label>Real Historical Map</label>
+        <label>HOLC 1939</label>
         <input id='slider' type='range' min='0' max='100' step='0' value='100' />
-      <label>Synthetic Historical Map</label>
+      <label>Census 1940</label>
         <input id='slider1' type='range' min='0' max='100' step='0' value='100' />
     </div>
 </div>
@@ -87,19 +87,19 @@ map.on('load', function() {
   //The "url" will be replaced by a Map ID. You get the Map ID by going back to the tileset page. If  you click on the map on that tileset page you will get the metadata for the map including the Map ID.
   map.addLayer
    ;
-     slider1.addEventListener('input', function(e) {
+     slider.addEventListener('input', function(e) {
         // Adjust the layers opacity. layer here is arbitrary - this could
         // be another layer name found in your style or a custom layer
         // added on the fly using `addSource`.
-        map.setPaintProperty('zekun-li-6chotj8u', 'raster-opacity', parseInt(e.target.value, 10) / 100);
+        map.setPaintProperty('zekun-li-aj0cc62x', 'raster-opacity', parseInt(e.target.value, 10) / 100);
     });
  
   ({
     
-        "id": "zekun-li-6chotj8u",
+        "id": "zekun-li-aj0cc62x",
         "source": {
             "type": "raster",
-            "url":"mapbox://zekun-li.6chotj8u"
+            "url": "mapbox://zekun-li.aj0cc62x"
         },
         "type": "raster"
     
@@ -108,30 +108,52 @@ map.on('load', function() {
    map.addLayer
    ;
   
-slider.addEventListener('input', function(e) {
+slider1.addEventListener('input', function(e) {
         // Adjust the layers opacity. layer here is arbitrary - this could
         // be another layer name found in your style or a custom layer
         // added on the fly using `addSource`.
-        map.setPaintProperty('mosaic-5j7zik', 'raster-opacity', parseInt(e.target.value, 10) / 100);
+        map.setPaintProperty('zekun-li-3c3jfdvd', 'raster-opacity', parseInt(e.target.value, 10) / 100);
         // Value indicator
     });
  });
   ({
     
-    "id":"mosaic-5j7zik",
+    "id":"zekun-li-3c3jfdvd",
         "source": {
             "type": "raster",
-            "url":"mapbox://zekun-li.6chotj8u"
+            "url": "zekun-li.3c3jfdvd"
         },
         "type": "raster"
      })
+  //In this section you will just want to replace the layers name with whatever name you gave your GreenBook layer.
+        map.on('click', function(e) {
+  var features = map.queryRenderedFeatures(e.point, {
+    layers: ['47GreenBook'] // replace this with the name of the layer
+  });
+  if (!features.length) {
+    return;
+  }
+  var feature = features[0];
+  var popup = new mapboxgl.Popup({ offset: [3, -15] })
+ 
+    .setLngLat(feature.geometry.coordinates)
+    .setHTML('<h3>' + feature.properties.Type + '</h3><p>' + feature.properties.Name + '</p>"<img src=' + feature.properties.Image  + "  'height=100 width=100>" 
 
+ 
+)
+             
+             
+             
+  
+    .setLngLat(feature.geometry.coordinates)
+    .addTo(map);
+});
 </script>
   <div id="info">
     
-    <h2>Demo of Generating Historical Map from OSM Map</h1>
+    <h2>Digital Mapping Ecosystems Example Map</h1>
 
-    <p>This map has two historical maps with a slider. </p>
+    <p>This map has two historical maps with a slider. In addition, one layer from the Greenbook has been added.</p>
     </div>
 
 </body>
