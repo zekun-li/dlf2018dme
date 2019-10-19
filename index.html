@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset='utf-8' />
-    <title>DLF Project Map</title>
+    <title>Demo Map</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.css' rel='stylesheet' />
@@ -58,103 +58,83 @@
  //You can label these however you want.
   <div class='map-overlay top'>
     <div class='map-overlay-inner'>
-        <label>HOLC 1939</label>
+        <label>OSM Map</label>
         <input id='slider' type='range' min='0' max='100' step='0' value='100' />
-      <label>Census 1940</label>
+      	<label>NLS Map</label>
         <input id='slider1' type='range' min='0' max='100' step='0' value='100' />
+        <label>Synthetic Historical Map</label>
+        <input id='slider2' type='range' min='0' max='100' step='0' value='100' />
     </div>
 </div>
 
-<script>
-  //The accessToken is a default one from Mapbox. You can create unique ones for different maps that you work on. 
-  //Change the style to your unique style url.
-mapboxgl.accessToken = 'pk.eyJ1IjoiemVrdW4tbGkiLCJhIjoiY2sxOXJsNW0zMDEycDNibzYxNWpnZjVxbyJ9.0B_LtsErZHMxP_Nee-wQtg';
-var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/zekun-li/ck1sgz4n13mb41cpiekh4tqcr',
-    center: [-1.545829, 52.589976],
-    minZoom: 9.5,
-    maxZoom: 13,
-    zoom: 9.5
-});
- 
-  
-       var slider = document.getElementById('slider', 'slider1');
-var sliderValue = document.getElementById('slider-value', 'slider-value1');
-map.on('load', function() {
-  
-  //In the section below replace the "id" info with the name that you gave your HOLC map. You can then replace all instances of that name in order to stay consistent. For example in the map.setPaintProperty replace 'HOLC1939' with your name.
-  //The "url" will be replaced by a Map ID. You get the Map ID by going back to the tileset page. If  you click on the map on that tileset page you will get the metadata for the map including the Map ID.
-  map.addLayer
-   ;
-     slider.addEventListener('input', function(e) {
+  <script>
+    //The accessToken is a default one from Mapbox. You can create unique ones for different maps that you work on. 
+    //Change the style to your unique style url.
+    mapboxgl.accessToken = 'pk.eyJ1IjoiemVrdW4tbGkiLCJhIjoiY2sxOXJsNW0zMDEycDNibzYxNWpnZjVxbyJ9.0B_LtsErZHMxP_Nee-wQtg';
+    var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/zekun-li/ck1sgz4n13mb41cpiekh4tqcr',
+      center: [-1.545829, 52.589976],
+      minZoom: 9.5,
+      maxZoom: 13,
+      zoom: 9.5
+    });
+
+
+    var slider = document.getElementById('slider', 'slider1');
+    var sliderValue = document.getElementById('slider-value', 'slider-value1');
+    map.on('load', function() {
+
+      //In the section below replace the "id" info with the name that you gave your HOLC map. You can then replace all instances of that name in order to stay consistent. For example in the map.setPaintProperty replace 'HOLC1939' with your name.
+      //The "url" will be replaced by a Map ID. You get the Map ID by going back to the tileset page. If  you click on the map on that tileset page you will get the metadata for the map including the Map ID.
+      map.addLayer
+      ;
+      slider.addEventListener('input', function(e) {
         // Adjust the layers opacity. layer here is arbitrary - this could
         // be another layer name found in your style or a custom layer
         // added on the fly using `addSource`.
         map.setPaintProperty('zekun-li-aj0cc62x', 'raster-opacity', parseInt(e.target.value, 10) / 100);
-    });
- 
-  ({
-    
+      });
+
+      ({
+
         "id": "zekun-li-aj0cc62x",
         "source": {
-            "type": "raster",
-            "url": "mapbox://zekun-li.aj0cc62x"
+          "type": "raster",
+          "url": "mapbox://zekun-li.aj0cc62x"
         },
         "type": "raster"
-    
-    })
-  
-   map.addLayer
-   ;
-  
-slider1.addEventListener('input', function(e) {
+
+      })
+
+      map.addLayer
+      ;
+
+      slider1.addEventListener('input', function(e) {
         // Adjust the layers opacity. layer here is arbitrary - this could
         // be another layer name found in your style or a custom layer
         // added on the fly using `addSource`.
         map.setPaintProperty('zekun-li-3c3jfdvd', 'raster-opacity', parseInt(e.target.value, 10) / 100);
         // Value indicator
+      });
     });
- });
-  ({
-    
-    "id":"zekun-li-3c3jfdvd",
-        "source": {
-            "type": "raster",
-            "url": "zekun-li.3c3jfdvd"
-        },
-        "type": "raster"
-     })
-  //In this section you will just want to replace the layers name with whatever name you gave your GreenBook layer.
-        map.on('click', function(e) {
-  var features = map.queryRenderedFeatures(e.point, {
-    layers: ['47GreenBook'] // replace this with the name of the layer
-  });
-  if (!features.length) {
-    return;
-  }
-  var feature = features[0];
-  var popup = new mapboxgl.Popup({ offset: [3, -15] })
- 
-    .setLngLat(feature.geometry.coordinates)
-    .setHTML('<h3>' + feature.properties.Type + '</h3><p>' + feature.properties.Name + '</p>"<img src=' + feature.properties.Image  + "  'height=100 width=100>" 
+    ({
 
- 
-)
-             
-             
-             
-  
-    .setLngLat(feature.geometry.coordinates)
-    .addTo(map);
-});
-</script>
+      "id":"zekun-li-3c3jfdvd",
+      "source": {
+        "type": "raster",
+        "url": "zekun-li.3c3jfdvd"
+      },
+      "type": "raster"
+    })
+
+  </script>
+
+
   <div id="info">
-    
-    <h2>Digital Mapping Ecosystems Example Map</h1>
-
-    <p>This map has two historical maps with a slider. In addition, one layer from the Greenbook has been added.</p>
-    </div>
+    <h2>Demo of Generating Historical Map from OSM Map</h2> 
+    <p>This map has two historical maps with a slider.</p>
+  </div>
 
 </body>
 </html>
