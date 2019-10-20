@@ -59,9 +59,9 @@
   <div class='map-overlay top'>
     <div class='map-overlay-inner'>
         <label>OSM Map</label>
-        <input id='slider' type='range' min='0' max='100' step='0' value='0' />
+        <input id='slider' type='range' min='0' max='100' step='0' value='100' />
       	<label>NLS Map</label>
-        <input id='slider1' type='range' min='0' max='100' step='0' value='0' />
+        <input id='slider1' type='range' min='0' max='100' step='0' value='100' />
         <label>Synthetic Historical Map</label>
         <input id='slider2' type='range' min='0' max='100' step='0' value='100' />
     </div>
@@ -81,8 +81,15 @@
     });
 
 
-    var slider = document.getElementById('slider', 'slider1','slider2');
-    var sliderValue = document.getElementById('slider-value', 'slider-value1','slider-value2');
+    var slider = document.getElementById('slider');
+    var slider1 = document.getElementById('slider1');
+    var slider2 = document.getElementById('slider2')
+    
+    //var sliderValue = document.getElementById('slider-value');
+    //var sliderValue1 = document.getElementById('slider-value1');
+    //var sliderValue2 = document.getElementById('slider-value2');
+    
+    
     map.on('load', function() {
 
       //In the section below replace the "id" info with the name that you gave your HOLC map. You can then replace all instances of that name in order to stay consistent. For example in the map.setPaintProperty replace 'HOLC1939' with your name.
@@ -93,15 +100,15 @@
         // Adjust the layers opacity. layer here is arbitrary - this could
         // be another layer name found in your style or a custom layer
         // added on the fly using `addSource`.
-        map.setPaintProperty('zekun-li-aj0cc62x', 'raster-opacity', parseInt(e.target.value, 10) / 100);
+        map.setPaintProperty('zekun-li-osm', 'raster-opacity', parseInt(e.target.value, 10) / 100);
       });
 
       ({
 
-        "id": "zekun-li-aj0cc62x",
+        "id": "zekun-li-osm",
         "source": {
           "type": "raster",
-          "url": "mapbox://zekun-li.aj0cc62x"
+          "url": "mapbox://zekun-li.d5v8denz"
         },
         "type": "raster"
 
@@ -123,7 +130,7 @@
       "id":"zekun-li-aj0cc62x",
       "source": {
         "type": "raster",
-        "url": "mapbox://zekun-li.j0cc62x"
+        "url": "mapbox://zekun-li.aj0cc62x"
       },
       "type": "raster"
     })
