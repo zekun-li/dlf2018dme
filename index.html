@@ -88,37 +88,12 @@
     //var sliderValue = document.getElementById('slider-value');
     //var sliderValue1 = document.getElementById('slider-value1');
     //var sliderValue2 = document.getElementById('slider-value2');
-
-
-    map.on('load', function() {
-
-      //In the section below replace the "id" info with the name that you gave your HOLC map. You can then replace all instances of that name in order to stay consistent. For example in the map.setPaintProperty replace 'HOLC1939' with your name.
-      //The "url" will be replaced by a Map ID. You get the Map ID by going back to the tileset page. If  you click on the map on that tileset page you will get the metadata for the map including the Map ID.
-      map.setPaintProperty('zekun-li-osm', 'raster-opacity', 0);
-
-      //map.addLayer
-      //;
       slider.addEventListener('input', function(e) {
         // Adjust the layers opacity. layer here is arbitrary - this could
         // be another layer name found in your style or a custom layer
         // added on the fly using `addSource`.
         map.setPaintProperty('zekun-li-osm', 'raster-opacity', parseInt(e.target.value, 10) / 100);
       });
-
-      ({
-
-        "id": "zekun-li-osm",
-        "source": {
-          "type": "raster",
-          "url": "mapbox://zekun-li.d5v8denz"
-        },
-        "type": "raster"
-
-      })
-
-      map.setPaintProperty('zekun-li-aj0cc62x', 'raster-opacity', 0);
-      // map.addLayer
-      //;
 
       slider1.addEventListener('input', function(e) {
         // Adjust the layers opacity. layer here is arbitrary - this could
@@ -127,36 +102,51 @@
         map.setPaintProperty('zekun-li-aj0cc62x', 'raster-opacity', parseInt(e.target.value, 10) / 100);
         // Value indicator
       });
-    });
-    ({
 
-      "id":"zekun-li-aj0cc62x",
-      "source": {
-        "type": "raster",
-        "url": "mapbox://zekun-li.aj0cc62x"
-      },
-      "type": "raster"
-    })
+      //map.addLayer;
+      slider2.addEventListener('input', function(e) {
+        // Adjust the layers opacity. layer here is arbitrary - this could
+        // be another layer name found in your style or a custom layer
+        // added on the fly using `addSource`.
+        map.setPaintProperty('zekun-li-3c3jfdvd', 'raster-opacity', parseInt(e.target.value, 10) / 100);
+      });
 
-    //map.addLayer;
-    slider2.addEventListener('input', function(e) {
-      // Adjust the layers opacity. layer here is arbitrary - this could
-      // be another layer name found in your style or a custom layer
-      // added on the fly using `addSource`.
-      map.setPaintProperty('zekun-li-3c3jfdvd', 'raster-opacity', parseInt(e.target.value, 10) / 100);
-    });
 
-    ({
+    map.on('load', function() {
 
-      "id": "zekun-li-3c3jfdvd",
-      "source": {
-        "type": "raster",
-        "url": "mapbox://zekun-li.3c3jfdvd"
-      },
-      "type": "raster"
+      map.addLayer({
 
-    })
+        "id": "zekun-li-osm",
+        "source": {
+          "type": "raster",
+          "url": "mapbox://zekun-li.d5v8denz"
+        },
+        "type": "raster"
+      });
 
+      map.addLayer({
+
+        "id":"zekun-li-aj0cc62x",
+        "source": {
+          "type": "raster",
+          "url": "mapbox://zekun-li.aj0cc62x"
+        },
+        "type": "raster"
+      });
+
+      map.addLayer({
+
+        "id": "zekun-li-3c3jfdvd",
+        "source": {
+          "type": "raster",
+          "url": "mapbox://zekun-li.3c3jfdvd"
+        },
+        "type": "raster"
+      });
+
+      map.setPaintProperty('zekun-li-osm', 'raster-opacity', 0);
+      map.setPaintProperty('zekun-li-aj0cc62x', 'raster-opacity', 0);
+	});
   </script>
 
 
